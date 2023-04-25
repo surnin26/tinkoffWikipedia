@@ -26,12 +26,12 @@ class LoginPage {
     }
 
     fun typeUsername() {
-        onView(withHint("Имя участника")).perform(typeText("surnin26"))
+        onView(anyOf(withHint("Имя участника"), withHint("Username"))).perform(typeText("surnin26"))
     }
 
     fun typePasswordLessThan() {
-        onView(withHint("Пароль")).perform(typeText("1111111"))
-        onView(withHint("Повторите пароль")).perform(typeText("1111111"))
+        onView(anyOf(withHint("Пароль"), withHint("Password"))).perform(typeText("1111111"))
+        onView(anyOf(withHint("Повторите пароль"), withHint("Repeat password"))).perform(typeText("1111111"))
     }
 
     fun pressEye() {
@@ -49,7 +49,7 @@ class LoginPage {
     }
 
     fun checkWrongPassword() {
-        onView(withText("Пароль должен состоять не менее чем из 8 символов.")).check(
+        onView(anyOf(withText("Пароль должен состоять не менее чем из 8 символов."), withText("The password must be at least 8 characters"))).check(
             matches(
                 isDisplayed()
             )
