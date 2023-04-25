@@ -1,15 +1,18 @@
 package org.wikipedia.tinkoff.screens
 
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiSelector
 
 class Settings {
     fun openFeedSettings() {
-        Espresso.onView(ViewMatchers.withText("Настроить ленту")).perform(ViewActions.click())
+        onView(withText("Настроить ленту")).perform(click())
     }
 
     fun scrollToDown() {
