@@ -14,6 +14,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import android.graphics.Color
 
 import org.hamcrest.Matchers.allOf
+import org.hamcrest.Matchers.anyOf
 import org.hamcrest.Matchers.not
 import org.wikipedia.R
 
@@ -21,7 +22,7 @@ import org.wikipedia.R
 class LoginPage {
 
     fun typePassword() {
-        onView(withHint("Пароль")).perform(typeText("11111111"))
+        onView(anyOf(withHint("Пароль"), withHint("Password"))).perform(typeText("11111111"))
     }
 
     fun typeUsername() {
@@ -34,8 +35,13 @@ class LoginPage {
     }
 
     fun pressEye() {
-        onView(allOf(withId(com.google.android.material.R.id.text_input_end_icon), isDescendantOfA(
-            withId(R.id.create_account_password_input)))).perform(click())
+        onView(
+            allOf(
+                withId(com.google.android.material.R.id.text_input_end_icon), isDescendantOfA(
+                    withId(R.id.create_account_password_input)
+                )
+            )
+        ).perform(click())
     }
 
     fun checkPasswordDisplayed() {
@@ -43,15 +49,29 @@ class LoginPage {
     }
 
     fun checkWrongPassword() {
-        onView(withText("Пароль должен состоять не менее чем из 8 символов.")).check(matches(isDisplayed()))
+        onView(withText("Пароль должен состоять не менее чем из 8 символов.")).check(
+            matches(
+                isDisplayed()
+            )
+        )
     }
 
     fun checkRed() {
-        onView(allOf(withHint("Пароль"), isDescendantOfA(withId(R.id.create_account_password_input)))).check(matches(hasTextColor((R.color.red500))))
+        onView(
+            allOf(
+                withHint("Пароль"),
+                isDescendantOfA(withId(R.id.create_account_password_input))
+            )
+        ).check(matches(hasTextColor((R.color.red500))))
     }
 
     fun checkPasswordNotDisplayed() {
-        onView(allOf(withId(com.google.android.material.R.id.text_input_end_icon), isDescendantOfA(withId(R.id.create_account_password_input)))).check(matches(not(withText("11111111"))));
+        onView(
+            allOf(
+                withId(com.google.android.material.R.id.text_input_end_icon),
+                isDescendantOfA(withId(R.id.create_account_password_input))
+            )
+        ).check(matches(not(withText("11111111"))));
     }
 
     fun pressNext() {

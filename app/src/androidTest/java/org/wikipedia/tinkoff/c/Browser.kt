@@ -10,6 +10,7 @@ import org.wikipedia.tinkoff.screens.GeneralScreen
 import org.wikipedia.tinkoff.screens.Menu
 import org.wikipedia.tinkoff.screens.OnboardPage
 import org.wikipedia.tinkoff.screens.Settings
+import java.lang.Exception
 
 class Browser {
 
@@ -27,7 +28,11 @@ class Browser {
         onboardPage.navigateToMainPage()
         menu.openSettings()
         settingsForScroll.scrollToDown()
-        settings.clickOnPolicy()
+        try {
+            settings.clickOnPolicy()
+        } catch (e: Exception) {
+            settings.clickOnPolicyEn()
+        }
         generalScreen.browserOnScreen()
     }
 }

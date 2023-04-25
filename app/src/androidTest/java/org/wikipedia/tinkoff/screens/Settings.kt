@@ -9,10 +9,11 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiSelector
+import org.hamcrest.core.AnyOf.anyOf
 
 class Settings {
     fun openFeedSettings() {
-        onView(withText("Настроить ленту")).perform(click())
+        onView(anyOf(withText("Настроить ленту"), withText("Customize the Explore feed"))).perform(click())
     }
 
     fun scrollToDown() {
@@ -32,10 +33,26 @@ class Settings {
         menuItem.click()
     }
 
+    fun navigateToAboutEn() {
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        val menuItem = device.findObject(
+            UiSelector().text("About the Wikipedia app")
+        )
+        menuItem.click()
+    }
+
     fun clickOnPolicy() {
         val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
         val menuItem = device.findObject(
             UiSelector().text("Политика конфиденциальности")
+        )
+        menuItem.click()
+    }
+
+    fun clickOnPolicyEn() {
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        val menuItem = device.findObject(
+            UiSelector().text("Privacy policy")
         )
         menuItem.click()
     }
