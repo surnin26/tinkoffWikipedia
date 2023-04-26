@@ -22,6 +22,10 @@ import org.wikipedia.R
 
 class LoginPage {
 
+    private val passwordInput = withId(R.id.create_account_password_input)
+    private val textInputEndIcon = withId(com.google.android.material.R.id.text_input_end_icon)
+    private val createAccountSubmit = withId(R.id.create_account_submit_button)
+
     fun typePassword() {
         onView(anyOf(withHint("Пароль"), withHint("Password"))).perform(typeText("11111111"))
     }
@@ -43,8 +47,8 @@ class LoginPage {
     fun pressEye() {
         onView(
             allOf(
-                withId(com.google.android.material.R.id.text_input_end_icon), isDescendantOfA(
-                    withId(R.id.create_account_password_input)
+                textInputEndIcon, isDescendantOfA(
+                    passwordInput
                 )
             )
         ).perform(click())
@@ -71,7 +75,7 @@ class LoginPage {
         onView(
             allOf(
                 withSubstring("Пароль"),
-                isDescendantOfA(withId(R.id.create_account_password_input))
+                isDescendantOfA(passwordInput)
             )
         ).check(matches(hasTextColor((R.color.red500))))
     }
@@ -79,13 +83,13 @@ class LoginPage {
     fun checkPasswordNotDisplayed() {
         onView(
             allOf(
-                withId(com.google.android.material.R.id.text_input_end_icon),
-                isDescendantOfA(withId(R.id.create_account_password_input))
+                textInputEndIcon,
+                isDescendantOfA(passwordInput)
             )
         ).check(matches(not(withText("11111111"))));
     }
 
     fun pressNext() {
-        onView(withId(R.id.create_account_submit_button)).perform(click())
+        onView(createAccountSubmit).perform(click())
     }
 }
