@@ -11,15 +11,19 @@ class Menu {
     private val mainAccount = withId(R.id.main_drawer_account_container)
 
     fun openSettings() {
-        onView(nav).perform(click())
-        onView(mainSettings).perform(click())
+        onView(nav)
+            .perform(click())
+        onView(mainSettings)
+            .perform(click())
     }
 
     fun openEtc() {
-        onView(nav).perform(click())
+        onView(nav)
+            .perform(click())
     }
 
     fun enterInWikipedia() {
-        onView(mainAccount).perform(click())
+        onView(mainAccount)
+            .perform(click())
     }
 }

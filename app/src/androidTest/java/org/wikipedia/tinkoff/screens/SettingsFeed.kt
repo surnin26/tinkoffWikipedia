@@ -20,11 +20,11 @@ class SettingsFeed {
         onView(
             anyOf(
                 allOf(
-                    hasSibling(withChild(ViewMatchers.withText("Избранная статья"))),
+                    hasSibling(withChild(withText("Избранная статья"))),
                     feedContentType
                 ),
                 allOf(
-                    hasSibling(withChild(ViewMatchers.withText("Featured article"))),
+                    hasSibling(withChild(withText("Featured article"))),
                     feedContentType
                 )
             )

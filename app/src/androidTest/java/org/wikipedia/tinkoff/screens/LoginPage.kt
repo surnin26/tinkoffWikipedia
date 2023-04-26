@@ -27,15 +27,18 @@ class LoginPage {
     private val createAccountSubmit = withId(R.id.create_account_submit_button)
 
     fun typePassword() {
-        onView(anyOf(withHint("Пароль"), withHint("Password"))).perform(typeText("11111111"))
+        onView(anyOf(withHint("Пароль"), withHint("Password")))
+            .perform(typeText("11111111"))
     }
 
     fun typeUsername() {
-        onView(anyOf(withHint("Имя участника"), withHint("Username"))).perform(typeText("surnin26"))
+        onView(anyOf(withHint("Имя участника"), withHint("Username")))
+            .perform(typeText("surnin26"))
     }
 
     fun typePasswordLessThan() {
-        onView(anyOf(withHint("Пароль"), withHint("Password"))).perform(typeText("1111111"))
+        onView(anyOf(withHint("Пароль"), withHint("Password")))
+            .perform(typeText("1111111"))
         onView(
             anyOf(
                 withHint("Повторите пароль"),
@@ -55,7 +58,8 @@ class LoginPage {
     }
 
     fun checkPasswordDisplayed() {
-        onView(withText("11111111")).check(matches(isDisplayed()))
+        onView(withText("11111111"))
+            .check(matches(isDisplayed()))
     }
 
     fun checkWrongPassword() {
@@ -68,16 +72,7 @@ class LoginPage {
             matches(
                 isDisplayed()
             )
-        )
-    }
-
-    fun checkRed() {
-        onView(
-            allOf(
-                withSubstring("Пароль"),
-                isDescendantOfA(passwordInput)
-            )
-        ).check(matches(hasTextColor((R.color.red500))))
+        ).check(matches(hasTextColor(R.color.red700)))
     }
 
     fun checkPasswordNotDisplayed() {

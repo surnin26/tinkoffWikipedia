@@ -23,6 +23,5 @@ class Validation {
         LoginPage().typeUsername()
         LoginPage().pressNext()
         LoginPage().checkWrongPassword()
-//        loginPage.checkRed() не могу догадаться как сверить красный цвет
     }
 }

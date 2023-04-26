@@ -6,7 +6,9 @@ import androidx.test.uiautomator.UiSelector
 
 class GeneralScreen {
     fun browserOnScreen() {
-        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-        device.findObject(UiSelector().packageName("com.android.browser"))
+        val device = UiDevice.getInstance(InstrumentationRegistry
+            .getInstrumentation())
+        device.findObject(UiSelector()
+            .packageName("com.android.browser"))
     }
 }

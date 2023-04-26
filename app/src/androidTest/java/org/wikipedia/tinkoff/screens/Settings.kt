@@ -14,7 +14,8 @@ import org.hamcrest.core.AnyOf.anyOf
 class Settings {
     private val settingsFeed = anyOf(withText("Настроить ленту"), withText("Customize the Explore feed"))
     fun openFeedSettings() {
-        onView(settingsFeed).perform(click())
+        onView(settingsFeed)
+            .perform(click())
     }
 
     fun scrollToDown() {
@@ -27,10 +28,12 @@ class Settings {
     }
 
     fun navigateToAbout() {
-        onView(anyOf(withText("О приложении «Википедия»"), withText("About the Wikipedia app"))).perform(click())
+        onView(anyOf(withText("О приложении «Википедия»"), withText("About the Wikipedia app")))
+            .perform(click())
     }
 
     fun clickOnPolicy() {
         onView(anyOf(withText("Политика конфиденциальности"), withText("Privacy policy")))
+            .perform(click())
     }
 }

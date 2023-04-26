@@ -13,14 +13,17 @@ class AboutPage {
     private val license = withId(R.id.about_app_license)
 
     fun authors() {
-        onView(contributors).check(matches(isDisplayed()))
+        onView(contributors)
+            .check(matches(isDisplayed()))
     }
 
     fun translators() {
-        onView(translators).check(matches(isDisplayed()))
+        onView(translators)
+            .check(matches(isDisplayed()))
     }
 
     fun license() {
-        onView(license).check(matches((isDisplayed())))
+        onView(license)
+            .check(matches((isDisplayed())))
     }
 }

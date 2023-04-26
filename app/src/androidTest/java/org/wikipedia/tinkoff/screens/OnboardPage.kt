@@ -11,8 +11,10 @@ class OnboardPage {
 
     fun navigateToMainPage() {
         for (i in 1..3) {
-            onView(fragment).perform(click())
+            onView(fragment)
+                .perform(click())
         }
-        onView(reject).perform(click())
+        onView(reject)
+            .perform(click())
     }
 }
