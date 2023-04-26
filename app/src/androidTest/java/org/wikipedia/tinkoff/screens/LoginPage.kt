@@ -1,6 +1,7 @@
 package org.wikipedia.tinkoff.screens
 
 
+import android.app.Instrumentation
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
@@ -12,7 +13,10 @@ import androidx.test.espresso.matcher.ViewMatchers.withHint
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import android.graphics.Color
+import android.view.KeyEvent
 import androidx.test.espresso.matcher.ViewMatchers.withSubstring
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.uiautomator.UiDevice
 
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anyOf
@@ -22,6 +26,7 @@ import org.wikipedia.R
 
 class LoginPage {
 
+    private val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
     private val passwordInput = withId(R.id.create_account_password_input)
     private val textInputEndIcon = withId(com.google.android.material.R.id.text_input_end_icon)
     private val createAccountSubmit = withId(R.id.create_account_submit_button)
@@ -34,6 +39,7 @@ class LoginPage {
     fun typeUsername() {
         onView(anyOf(withHint("Имя участника"), withHint("Username")))
             .perform(typeText("surnin26"))
+        device.pressKeyCode(KeyEvent.KEYCODE_BACK);
     }
 
     fun typePasswordLessThan() {

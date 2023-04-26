@@ -22,6 +22,7 @@ class Browser {
         OnboardPage().navigateToMainPage()
         Menu().openSettings()
         Settings().scrollToDown()
+        Thread.sleep(500)
         Settings().clickOnPolicy()
         GeneralScreen().browserOnScreen()
     }

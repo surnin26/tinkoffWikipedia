@@ -19,6 +19,7 @@ class Blocks {
         OnboardPage().navigateToMainPage()
         Menu().openSettings()
         Settings().scrollToDown()
+        Thread.sleep(500)
         Settings().navigateToAbout()
         AboutPage().authors()
         AboutPage().translators()
