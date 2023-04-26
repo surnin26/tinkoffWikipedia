@@ -8,15 +8,19 @@ import org.wikipedia.R
 
 class AboutPage {
 
+    private val contributors = withId(R.id.about_contributors)
+    private val translators = withId(R.id.about_translators)
+    private val license = withId(R.id.about_app_license)
+
     fun authors() {
-        onView(withId(R.id.about_contributors)).check(matches(isDisplayed()))
+        onView(contributors).check(matches(isDisplayed()))
     }
 
     fun translators() {
-        onView(withId(R.id.about_translators)).check(matches(isDisplayed()))
+        onView(translators).check(matches(isDisplayed()))
     }
 
     fun license() {
-        onView(withId(R.id.about_app_license)).check(matches((isDisplayed())))
+        onView(license).check(matches((isDisplayed())))
     }
 }

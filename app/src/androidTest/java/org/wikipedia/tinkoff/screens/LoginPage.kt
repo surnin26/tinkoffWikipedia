@@ -12,6 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withHint
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import android.graphics.Color
+import androidx.test.espresso.matcher.ViewMatchers.withSubstring
 
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anyOf
@@ -31,7 +32,12 @@ class LoginPage {
 
     fun typePasswordLessThan() {
         onView(anyOf(withHint("Пароль"), withHint("Password"))).perform(typeText("1111111"))
-        onView(anyOf(withHint("Повторите пароль"), withHint("Repeat password"))).perform(typeText("1111111"))
+        onView(
+            anyOf(
+                withHint("Повторите пароль"),
+                withHint("Repeat password")
+            )
+        ).perform(typeText("1111111"))
     }
 
     fun pressEye() {
@@ -49,7 +55,12 @@ class LoginPage {
     }
 
     fun checkWrongPassword() {
-        onView(anyOf(withText("Пароль должен состоять не менее чем из 8 символов."), withText("The password must be at least 8 characters"))).check(
+        onView(
+            anyOf(
+                withText("Пароль должен состоять не менее чем из 8 символов."),
+                withText("The password must be at least 8 characters")
+            )
+        ).check(
             matches(
                 isDisplayed()
             )
@@ -59,7 +70,7 @@ class LoginPage {
     fun checkRed() {
         onView(
             allOf(
-                withHint("Пароль"),
+                withSubstring("Пароль"),
                 isDescendantOfA(withId(R.id.create_account_password_input))
             )
         ).check(matches(hasTextColor((R.color.red500))))

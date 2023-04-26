@@ -12,8 +12,9 @@ import androidx.test.uiautomator.UiSelector
 import org.hamcrest.core.AnyOf.anyOf
 
 class Settings {
+    private val settingsFeed = anyOf(withText("Настроить ленту"), withText("Customize the Explore feed"))
     fun openFeedSettings() {
-        onView(anyOf(withText("Настроить ленту"), withText("Customize the Explore feed"))).perform(click())
+        onView(settingsFeed).perform(click())
     }
 
     fun scrollToDown() {
@@ -21,7 +22,7 @@ class Settings {
         val startX = device.displayWidth / 2
         val startY = device.displayHeight - 1
         val endY = 0
-        val steps = 10
+        val steps = 20
         device.swipe(startX, startY, startX, endY, steps)
     }
 

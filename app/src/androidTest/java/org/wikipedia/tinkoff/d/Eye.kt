@@ -13,20 +13,15 @@ class Eye {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
-    private val onboardPage = OnboardPage()
-    private val menu = Menu()
-    private val loginPage = LoginPage()
-
-
     @Test
     fun checkEye() {
-        onboardPage.navigateToMainPage()
-        menu.openEtc()
-        menu.enterInWikipedia()
-        loginPage.typePassword()
-        loginPage.pressEye()
-        loginPage.checkPasswordDisplayed()
-        loginPage.pressEye()
-        loginPage.checkPasswordNotDisplayed()
+        OnboardPage().navigateToMainPage()
+        Menu().openEtc()
+        Menu().enterInWikipedia()
+        LoginPage().typePassword()
+        LoginPage().pressEye()
+        LoginPage().checkPasswordDisplayed()
+        LoginPage().pressEye()
+        LoginPage().checkPasswordNotDisplayed()
     }
 }

@@ -1,185 +1,182 @@
 package org.wikipedia.tinkoff.screens
 
-import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
-import org.hamcrest.Matchers
+import androidx.test.espresso.matcher.ViewMatchers.hasSibling
+import androidx.test.espresso.matcher.ViewMatchers.isChecked
+import androidx.test.espresso.matcher.ViewMatchers.withChild
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import org.hamcrest.Matchers.allOf
 import org.hamcrest.core.AnyOf.anyOf
 import org.wikipedia.R
 
 class SettingsFeed {
 
+    private val feedContentType = withId(R.id.feed_content_type_checkbox)
+
     fun verifyFeedOptions() {
-        Espresso.onView(
+        onView(
             anyOf(
-                Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
-                            ViewMatchers.withText(
-                                "Избранная статья"
-                            )
-                        )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
-                ), Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
-                            ViewMatchers.withText(
-                                "Featured article"
-                            )
-                        )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
+                allOf(
+                    hasSibling(withChild(ViewMatchers.withText("Избранная статья"))),
+                    feedContentType
+                ),
+                allOf(
+                    hasSibling(withChild(ViewMatchers.withText("Featured article"))),
+                    feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(ViewMatchers.isChecked()))
-        Espresso.onView(
+        ).check(ViewAssertions.matches(isChecked()))
+        onView(
             anyOf(
-                Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "Самое читаемое"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
-                ), Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                    ), feedContentType
+                ), allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "Top read"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
+                    ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(ViewMatchers.isChecked()))
-        Espresso.onView(
+        ).check(ViewAssertions.matches(isChecked()))
+        onView(
             anyOf(
-                Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "Изображение дня"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
-                ), Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                    ), feedContentType
+                ), allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "Picture of the day"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
+                    ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(ViewMatchers.isChecked()))
-        Espresso.onView(
+        ).check(ViewAssertions.matches(isChecked()))
+        onView(
             anyOf(
-                Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "На основе прочитанного"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
-                ), Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                    ), feedContentType
+                ), allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "Because you read"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
+                    ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(ViewMatchers.isChecked()))
-        Espresso.onView(
+        ).check(ViewAssertions.matches(isChecked()))
+        onView(
             anyOf(
-                Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "В новостях"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
-                ), Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                    ), feedContentType
+                ), allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "In the news"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
+                    ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(ViewMatchers.isChecked()))
-        Espresso.onView(
+        ).check(ViewAssertions.matches(isChecked()))
+        onView(
             anyOf(
-                Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "В этот день"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
-                ), Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                    ), feedContentType
+                ), allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "On this day"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
+                    ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(ViewMatchers.isChecked()))
+        ).check(ViewAssertions.matches(isChecked()))
     }
 
     fun verifyAdditionalFeedOptions() {
-        Espresso.onView(
+        onView(
             anyOf(
-                Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "Рандомизатор"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
-                ), Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                    ), feedContentType
+                ), allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "Randomizer"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
+                    ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(ViewMatchers.isChecked()))
-        Espresso.onView(
+        ).check(ViewAssertions.matches(isChecked()))
+        onView(
             anyOf(
-                Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "Сегодня в Википедии"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
-                ), Matchers.allOf(
-                    ViewMatchers.hasSibling(
-                        ViewMatchers.withChild(
+                    ), feedContentType
+                ), allOf(
+                    hasSibling(
+                        withChild(
                             ViewMatchers.withText(
                                 "Today on Wikipedia"
                             )
                         )
-                    ), ViewMatchers.withId(R.id.feed_content_type_checkbox)
+                    ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(ViewMatchers.isChecked()))
+        ).check(ViewAssertions.matches(isChecked()))
     }
 }

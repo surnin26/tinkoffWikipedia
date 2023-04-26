@@ -14,23 +14,18 @@ class Blocks {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
-    private val onboardPage = OnboardPage()
-    private val menu = Menu()
-    private val settings = Settings()
-    private val aboutPage = AboutPage()
-
     @Test
     fun assertBlocksWithAuthorsTranslatorsLicenses() {
-        onboardPage.navigateToMainPage()
-        menu.openSettings()
-        settings.scrollToDown()
+        OnboardPage().navigateToMainPage()
+        Menu().openSettings()
+        Settings().scrollToDown()
         try {
-            settings.navigateToAbout()
+            Settings().navigateToAbout()
         } catch (e: Exception) {
-            settings.navigateToAboutEn()
+            Settings().navigateToAboutEn()
         }
-        aboutPage.authors()
-        aboutPage.translators()
-        aboutPage.license()
+        AboutPage().authors()
+        AboutPage().translators()
+        AboutPage().license()
     }
 }

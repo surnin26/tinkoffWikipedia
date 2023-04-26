@@ -6,16 +6,20 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import org.wikipedia.R
 
 class Menu {
+    private val nav = withId(R.id.nav_more_container)
+    private val mainSettings = withId(R.id.main_drawer_settings_container)
+    private val mainAccount = withId(R.id.main_drawer_account_container)
+
     fun openSettings() {
-        onView(withId(R.id.nav_more_container)).perform(click())
-        onView(withId(R.id.main_drawer_settings_container)).perform(click())
+        onView(nav).perform(click())
+        onView(mainSettings).perform(click())
     }
 
     fun openEtc() {
-        onView(withId(R.id.nav_more_container)).perform(click())
+        onView(nav).perform(click())
     }
 
     fun enterInWikipedia() {
-        onView(withId(R.id.main_drawer_account_container)).perform(click())
+        onView(mainAccount).perform(click())
     }
 }

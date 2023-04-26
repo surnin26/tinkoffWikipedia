@@ -14,18 +14,13 @@ class Feed {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
-    private val onboardPage = OnboardPage()
-    private val menu = Menu()
-    private val settings = Settings()
-    private val settingsFeed = SettingsFeed()
-
     @Test
     fun feedSettingsCheck() {
-        onboardPage.navigateToMainPage()
-        menu.openSettings()
-        settings.openFeedSettings()
-        settingsFeed.verifyFeedOptions()
-        settings.scrollToDown()
-        settingsFeed.verifyAdditionalFeedOptions()
+        OnboardPage().navigateToMainPage()
+        Menu().openSettings()
+        Settings().openFeedSettings()
+        SettingsFeed().verifyFeedOptions()
+        Settings().scrollToDown()
+        SettingsFeed().verifyAdditionalFeedOptions()
     }
 }

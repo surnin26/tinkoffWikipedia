@@ -17,22 +17,16 @@ class Browser {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
-    private val onboardPage = OnboardPage()
-    private val menu = Menu()
-    private val settingsForScroll = Settings()
-    private val settings = Settings()
-    private val generalScreen = GeneralScreen()
-
     @Test
     fun browserStartup() {
-        onboardPage.navigateToMainPage()
-        menu.openSettings()
-        settingsForScroll.scrollToDown()
+        OnboardPage().navigateToMainPage()
+        Menu().openSettings()
+        Settings().scrollToDown()
         try {
-            settings.clickOnPolicy()
+            Settings().clickOnPolicy()
         } catch (e: Exception) {
-            settings.clickOnPolicyEn()
+            Settings().clickOnPolicyEn()
         }
-        generalScreen.browserOnScreen()
+        GeneralScreen().browserOnScreen()
     }
 }

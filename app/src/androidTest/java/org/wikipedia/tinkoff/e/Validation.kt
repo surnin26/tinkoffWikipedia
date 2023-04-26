@@ -14,20 +14,15 @@ class Validation {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
-    private val onboardPage = OnboardPage()
-    private val menu = Menu()
-    private val loginPage = LoginPage()
-
-
     @Test
     fun checkValidation() {
-        onboardPage.navigateToMainPage()
-        menu.openEtc()
-        menu.enterInWikipedia()
-        loginPage.typePasswordLessThan()
-        loginPage.typeUsername()
-        loginPage.pressNext()
-        loginPage.checkWrongPassword()
+        OnboardPage().navigateToMainPage()
+        Menu().openEtc()
+        Menu().enterInWikipedia()
+        LoginPage().typePasswordLessThan()
+        LoginPage().typeUsername()
+        LoginPage().pressNext()
+        LoginPage().checkWrongPassword()
 //        loginPage.checkRed() не могу догадаться как сверить красный цвет
     }
 }
