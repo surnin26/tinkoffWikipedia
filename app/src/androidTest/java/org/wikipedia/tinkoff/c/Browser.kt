@@ -22,11 +22,7 @@ class Browser {
         OnboardPage().navigateToMainPage()
         Menu().openSettings()
         Settings().scrollToDown()
-        try {
-            Settings().clickOnPolicy()
-        } catch (e: Exception) {
-            Settings().clickOnPolicyEn()
-        }
+        Settings().clickOnPolicy()
         GeneralScreen().browserOnScreen()
     }
 }

@@ -19,11 +19,7 @@ class Blocks {
         OnboardPage().navigateToMainPage()
         Menu().openSettings()
         Settings().scrollToDown()
-        try {
-            Settings().navigateToAbout()
-        } catch (e: Exception) {
-            Settings().navigateToAboutEn()
-        }
+        Settings().navigateToAbout()
         AboutPage().authors()
         AboutPage().translators()
         AboutPage().license()

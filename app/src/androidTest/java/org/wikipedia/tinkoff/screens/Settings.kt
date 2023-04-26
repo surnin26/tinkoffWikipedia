@@ -27,34 +27,10 @@ class Settings {
     }
 
     fun navigateToAbout() {
-        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-        val menuItem = device.findObject(
-            UiSelector().text("О приложении «Википедия»")
-        )
-        menuItem.click()
-    }
-
-    fun navigateToAboutEn() {
-        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-        val menuItem = device.findObject(
-            UiSelector().text("About the Wikipedia app")
-        )
-        menuItem.click()
+        onView(anyOf(withText("О приложении «Википедия»"), withText("About the Wikipedia app"))).perform(click())
     }
 
     fun clickOnPolicy() {
-        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-        val menuItem = device.findObject(
-            UiSelector().text("Политика конфиденциальности")
-        )
-        menuItem.click()
-    }
-
-    fun clickOnPolicyEn() {
-        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
-        val menuItem = device.findObject(
-            UiSelector().text("Privacy policy")
-        )
-        menuItem.click()
+        onView(anyOf(withText("Политика конфиденциальности"), withText("Privacy policy")))
     }
 }

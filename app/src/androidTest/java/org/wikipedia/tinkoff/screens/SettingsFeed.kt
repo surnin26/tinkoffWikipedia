@@ -7,6 +7,7 @@ import androidx.test.espresso.matcher.ViewMatchers.hasSibling
 import androidx.test.espresso.matcher.ViewMatchers.isChecked
 import androidx.test.espresso.matcher.ViewMatchers.withChild
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.core.AnyOf.anyOf
 import org.wikipedia.R
@@ -33,7 +34,7 @@ class SettingsFeed {
                 allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "Самое читаемое"
                             )
                         )
@@ -41,7 +42,7 @@ class SettingsFeed {
                 ), allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "Top read"
                             )
                         )
@@ -54,7 +55,7 @@ class SettingsFeed {
                 allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "Изображение дня"
                             )
                         )
@@ -62,7 +63,7 @@ class SettingsFeed {
                 ), allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "Picture of the day"
                             )
                         )
@@ -75,7 +76,7 @@ class SettingsFeed {
                 allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "На основе прочитанного"
                             )
                         )
@@ -83,7 +84,7 @@ class SettingsFeed {
                 ), allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "Because you read"
                             )
                         )
@@ -96,7 +97,7 @@ class SettingsFeed {
                 allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "В новостях"
                             )
                         )
@@ -104,7 +105,7 @@ class SettingsFeed {
                 ), allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "In the news"
                             )
                         )
@@ -117,7 +118,7 @@ class SettingsFeed {
                 allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "В этот день"
                             )
                         )
@@ -125,7 +126,7 @@ class SettingsFeed {
                 ), allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "On this day"
                             )
                         )
@@ -141,7 +142,7 @@ class SettingsFeed {
                 allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "Рандомизатор"
                             )
                         )
@@ -149,7 +150,7 @@ class SettingsFeed {
                 ), allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "Randomizer"
                             )
                         )
@@ -162,7 +163,7 @@ class SettingsFeed {
                 allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "Сегодня в Википедии"
                             )
                         )
@@ -170,7 +171,7 @@ class SettingsFeed {
                 ), allOf(
                     hasSibling(
                         withChild(
-                            ViewMatchers.withText(
+                            withText(
                                 "Today on Wikipedia"
                             )
                         )
