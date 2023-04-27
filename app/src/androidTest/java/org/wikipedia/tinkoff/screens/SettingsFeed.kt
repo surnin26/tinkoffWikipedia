@@ -2,7 +2,7 @@ package org.wikipedia.tinkoff.screens
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.hasSibling
 import androidx.test.espresso.matcher.ViewMatchers.isChecked
 import androidx.test.espresso.matcher.ViewMatchers.withChild
@@ -28,7 +28,7 @@ class SettingsFeed {
                     feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(isChecked()))
+        ).check(matches(isChecked()))
         onView(
             anyOf(
                 allOf(
@@ -49,7 +49,7 @@ class SettingsFeed {
                     ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(isChecked()))
+        ).check(matches(isChecked()))
         onView(
             anyOf(
                 allOf(
@@ -70,7 +70,7 @@ class SettingsFeed {
                     ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(isChecked()))
+        ).check(matches(isChecked()))
         onView(
             anyOf(
                 allOf(
@@ -91,7 +91,7 @@ class SettingsFeed {
                     ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(isChecked()))
+        ).check(matches(isChecked()))
         onView(
             anyOf(
                 allOf(
@@ -112,7 +112,7 @@ class SettingsFeed {
                     ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(isChecked()))
+        ).check(matches(isChecked()))
         onView(
             anyOf(
                 allOf(
@@ -133,7 +133,7 @@ class SettingsFeed {
                     ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(isChecked()))
+        ).check(matches(isChecked()))
     }
 
     fun verifyAdditionalFeedOptions() {
@@ -157,7 +157,7 @@ class SettingsFeed {
                     ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(isChecked()))
+        ).check(matches(isChecked()))
         onView(
             anyOf(
                 allOf(
@@ -178,6 +178,6 @@ class SettingsFeed {
                     ), feedContentType
                 )
             )
-        ).check(ViewAssertions.matches(isChecked()))
+        ).check(matches(isChecked()))
     }
 }

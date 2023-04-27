@@ -11,4 +11,9 @@ class GeneralScreen {
         device.findObject(UiSelector()
             .packageName("com.android.browser"))
     }
+
+    fun pressBack() {
+        val device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
+        device.pressBack()
+    }
 }

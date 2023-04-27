@@ -18,9 +18,10 @@ class Blocks {
     fun assertBlocksWithAuthorsTranslatorsLicenses() {
         OnboardPage().navigateToMainPage()
         Menu().openSettings()
-        Settings().scrollToDown()
-        Thread.sleep(500)
-        Settings().navigateToAbout()
+        Settings().scrollToDown(20)
+        Settings().clickToAbout()
+        Settings().clickToAbout()
+        Settings().clickToAbout()
         AboutPage().authors()
         AboutPage().translators()
         AboutPage().license()
