@@ -4,6 +4,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import org.junit.Rule
 import org.junit.Test
 import org.wikipedia.main.MainActivity
+import org.wikipedia.tinkoff.screens.GeneralScreen
 import org.wikipedia.tinkoff.screens.LoginPage
 import org.wikipedia.tinkoff.screens.Menu
 import org.wikipedia.tinkoff.screens.OnboardPage
@@ -20,7 +21,6 @@ class Validate {
         Menu().enterInWikipedia()
         LoginPage().typePasswordLessThan()
         LoginPage().typeUsername()
-        LoginPage().pressNext()
         LoginPage().pressNext()
         LoginPage().checkWrongPassword()
     }

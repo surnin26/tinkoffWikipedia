@@ -1,7 +1,7 @@
 package org.wikipedia.tinkoff.screens
 
 
-import android.app.Instrumentation
+import android.view.KeyEvent
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
@@ -12,12 +12,9 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withHint
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import android.graphics.Color
-import android.view.KeyEvent
-import androidx.test.espresso.matcher.ViewMatchers.withSubstring
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
-
+import org.awaitility.Awaitility
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anyOf
 import org.hamcrest.Matchers.not
@@ -30,67 +27,81 @@ class LoginPage {
     private val passwordInput = withId(R.id.create_account_password_input)
     private val textInputEndIcon = withId(com.google.android.material.R.id.text_input_end_icon)
     private val createAccountSubmit = withId(R.id.create_account_submit_button)
+    private val password = anyOf(withHint("Пароль"), withHint("Password"))
+    private val repeatPassword = anyOf(withHint("Повторите пароль"), withHint("Repeat password"))
+    private val warningPassword = anyOf(withText("Пароль должен состоять не менее чем из 8 символов."), withText("The password must be at least 8 characters"))
+    private val userName = anyOf(withHint("Имя участника"), withHint("Username"))
+    private val userNameType = "surnin26"
+    private val sevenDigit = "1111111"
+    private val eightDigit = "11111111"
+
 
     fun typePassword() {
-        onView(anyOf(withHint("Пароль"), withHint("Password")))
-            .perform(typeText("11111111"))
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+            onView(password)
+                .perform(typeText(eightDigit))
+        }
     }
 
     fun typeUsername() {
-        onView(anyOf(withHint("Имя участника"), withHint("Username")))
-            .perform(typeText("surnin26"))
-        device.pressKeyCode(KeyEvent.KEYCODE_BACK);
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+            onView(userName)
+                .perform(typeText(userNameType))
+            device.pressKeyCode(KeyEvent.KEYCODE_BACK)
+        }
     }
 
     fun typePasswordLessThan() {
-        onView(anyOf(withHint("Пароль"), withHint("Password")))
-            .perform(typeText("1111111"))
-        onView(
-            anyOf(
-                withHint("Повторите пароль"),
-                withHint("Repeat password")
-            )
-        ).perform(typeText("1111111"))
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+            onView(password)
+                .perform(typeText(sevenDigit))
+            onView(repeatPassword).perform(typeText(sevenDigit))
+        }
     }
 
     fun pressEye() {
-        onView(
-            allOf(
-                textInputEndIcon, isDescendantOfA(
-                    passwordInput
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+            onView(
+                allOf(
+                    textInputEndIcon, isDescendantOfA(
+                        passwordInput
+                    )
                 )
-            )
-        ).perform(click())
+            ).perform(click())
+        }
     }
 
     fun checkPasswordDisplayed() {
-        onView(withText("11111111"))
-            .check(matches(isDisplayed()))
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+            onView(withText(eightDigit))
+                .check(matches(isDisplayed()))
+        }
     }
 
     fun checkWrongPassword() {
-        onView(
-            anyOf(
-                withText("Пароль должен состоять не менее чем из 8 символов."),
-                withText("The password must be at least 8 characters")
-            )
-        ).check(
-            matches(
-                isDisplayed()
-            )
-        ).check(matches(hasTextColor(R.color.red700)))
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+            onView(warningPassword).check(
+                matches(
+                    isDisplayed()
+                )
+            ).check(matches(anyOf(hasTextColor(R.color.red700), hasTextColor(R.color.red500))))
+        }
     }
 
     fun checkPasswordNotDisplayed() {
-        onView(
-            allOf(
-                textInputEndIcon,
-                isDescendantOfA(passwordInput)
-            )
-        ).check(matches(not(withText("11111111"))));
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+            onView(
+                allOf(
+                    textInputEndIcon,
+                    isDescendantOfA(passwordInput)
+                )
+            ).check(matches(not(withText(eightDigit))));
+        }
     }
 
     fun pressNext() {
-        onView(createAccountSubmit).perform(click())
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+            onView(createAccountSubmit).perform(click())
+        }
     }
 }

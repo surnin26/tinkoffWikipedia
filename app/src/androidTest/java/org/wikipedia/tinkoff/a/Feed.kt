@@ -20,8 +20,5 @@ class Feed {
         Menu().openSettings()
         Settings().openFeedSettings()
         SettingsFeed().verifyFeedOptions()
-        Settings().scrollToDown(10)
-        Settings().scrollToDown(5)
-        SettingsFeed().verifyAdditionalFeedOptions()
     }
 }

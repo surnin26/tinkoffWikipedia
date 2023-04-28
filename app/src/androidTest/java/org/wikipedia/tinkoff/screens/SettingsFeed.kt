@@ -15,169 +15,129 @@ import org.wikipedia.R
 class SettingsFeed {
 
     private val feedContentType = withId(R.id.feed_content_type_checkbox)
+    private val featuredArticle =
+        hasSibling(withChild(withText(R.string.view_featured_article_card_title)))
+    private val topRead = hasSibling(withChild(withText(R.string.view_top_read_card_title)))
+    private val featuredImage =
+        hasSibling(withChild(withText(R.string.view_featured_image_card_title)))
+    private val causeRead =
+        allOf(hasSibling(withChild(withText(R.string.view_because_you_read_card_title))))
+    private val cardNews = hasSibling(withChild(withText(R.string.view_card_news_title)))
+    private val onThisDay = hasSibling(withChild(withText(R.string.on_this_day_card_title)))
+    private val random = hasSibling(withChild(withText(R.string.view_random_card_title)))
+    private val cardTitle = hasSibling(withChild(withText(R.string.view_main_page_card_title)))
+
 
     fun verifyFeedOptions() {
-        onView(
-            anyOf(
+        try {
+            onView(
                 allOf(
-                    hasSibling(withChild(withText("Избранная статья"))),
-                    feedContentType
-                ),
-                allOf(
-                    hasSibling(withChild(withText("Featured article"))),
-                    feedContentType
+                    featuredArticle, feedContentType
                 )
-            )
-        ).check(matches(isChecked()))
-        onView(
-            anyOf(
-                allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "Самое читаемое"
-                            )
-                        )
-                    ), feedContentType
-                ), allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "Top read"
-                            )
-                        )
-                    ), feedContentType
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        topRead, feedContentType
+                    )
                 )
-            )
-        ).check(matches(isChecked()))
-        onView(
-            anyOf(
-                allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "Изображение дня"
-                            )
-                        )
-                    ), feedContentType
-                ), allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "Picture of the day"
-                            )
-                        )
-                    ), feedContentType
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        featuredImage, feedContentType
+                    )
                 )
-            )
-        ).check(matches(isChecked()))
-        onView(
-            anyOf(
-                allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "На основе прочитанного"
-                            )
-                        )
-                    ), feedContentType
-                ), allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "Because you read"
-                            )
-                        )
-                    ), feedContentType
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(causeRead, feedContentType)
                 )
-            )
-        ).check(matches(isChecked()))
-        onView(
-            anyOf(
-                allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "В новостях"
-                            )
-                        )
-                    ), feedContentType
-                ), allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "In the news"
-                            )
-                        )
-                    ), feedContentType
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        cardNews, feedContentType
+                    )
                 )
-            )
-        ).check(matches(isChecked()))
-        onView(
-            anyOf(
-                allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "В этот день"
-                            )
-                        )
-                    ), feedContentType
-                ), allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "On this day"
-                            )
-                        )
-                    ), feedContentType
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        onThisDay, feedContentType
+                    )
                 )
-            )
-        ).check(matches(isChecked()))
-    }
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        random, feedContentType
+                    )
+                )
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        cardTitle, feedContentType
+                    )
+                )
+            ).check(matches(isChecked()))
+        } catch (e: Exception) {
+            onView(
+                allOf(
+                    featuredArticle, feedContentType
+                )
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        topRead, feedContentType
+                    )
+                )
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        featuredImage, feedContentType
+                    )
+                )
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(causeRead, feedContentType)
+                )
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        cardNews, feedContentType
+                    )
+                )
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        onThisDay, feedContentType
+                    )
+                )
+            ).check(matches(isChecked()))
 
-    fun verifyAdditionalFeedOptions() {
-        onView(
-            anyOf(
-                allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "Рандомизатор"
-                            )
-                        )
-                    ), feedContentType
-                ), allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "Randomizer"
-                            )
-                        )
-                    ), feedContentType
+            Settings().scroll()
+
+            onView(
+                anyOf(
+                    allOf(
+                        random, feedContentType
+                    )
                 )
-            )
-        ).check(matches(isChecked()))
-        onView(
-            anyOf(
-                allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "Сегодня в Википедии"
-                            )
-                        )
-                    ), feedContentType
-                ), allOf(
-                    hasSibling(
-                        withChild(
-                            withText(
-                                "Today on Wikipedia"
-                            )
-                        )
-                    ), feedContentType
+            ).check(matches(isChecked()))
+            onView(
+                anyOf(
+                    allOf(
+                        cardTitle, feedContentType
+                    )
                 )
-            )
-        ).check(matches(isChecked()))
+            ).check(matches(isChecked()))
+        }
     }
 }

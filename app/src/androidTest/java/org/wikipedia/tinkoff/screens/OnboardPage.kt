@@ -6,6 +6,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import org.wikipedia.R
 
 class OnboardPage {
+
     private val fragment = withId(R.id.fragment_onboarding_forward_button)
     private val reject = withId(R.id.rejectButton)
 

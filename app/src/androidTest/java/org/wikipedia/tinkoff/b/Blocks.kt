@@ -18,9 +18,9 @@ class Blocks {
     fun assertBlocksWithAuthorsTranslatorsLicenses() {
         OnboardPage().navigateToMainPage()
         Menu().openSettings()
-        Settings().scrollToDown(20)
-        Settings().clickToAbout()
-        Settings().clickToAbout()
+        Settings().scroll()
+//        Thread.sleep(500) (на подключенном пикселе не проходит, если не поставить такой слип
+//        (знаю, что нельзя, поэтому коммент), на всех остальных проходит)
         Settings().clickToAbout()
         AboutPage().authors()
         AboutPage().translators()

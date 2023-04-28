@@ -21,8 +21,7 @@ class Browser {
     fun browserStartup() {
         OnboardPage().navigateToMainPage()
         Menu().openSettings()
-        Settings().scrollToDown(15)
-        Settings().clickOnPolicy()
+        Settings().scroll()
         Settings().clickOnPolicy()
         GeneralScreen().browserOnScreen()
         GeneralScreen().pressBack()
