@@ -8,6 +8,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isChecked
 import androidx.test.espresso.matcher.ViewMatchers.withChild
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import org.awaitility.Awaitility
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.core.AnyOf.anyOf
 import org.wikipedia.R
@@ -29,115 +30,45 @@ class SettingsFeed {
 
 
     fun verifyFeedOptions() {
-        try {
-            onView(
-                allOf(
-                    featuredArticle, feedContentType
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        topRead, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        featuredImage, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(causeRead, feedContentType)
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        cardNews, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        onThisDay, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        random, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        cardTitle, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
-        } catch (e: Exception) {
-            onView(
-                allOf(
-                    featuredArticle, feedContentType
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        topRead, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        featuredImage, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(causeRead, feedContentType)
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        cardNews, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        onThisDay, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(10)).untilAsserted {
+            try {
+                onView(allOf(featuredArticle, feedContentType))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(topRead, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(featuredImage, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(causeRead, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(cardNews, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(onThisDay, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(random, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(cardTitle, feedContentType)))
+                    .check(matches(isChecked()))
+            } catch (e: Exception) {
+                onView(allOf(featuredArticle, feedContentType))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(topRead, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(featuredImage, feedContentType)))
+                    .check(matches(isChecked()))
 
-            Settings().scroll()
+                Settings().scroll()
 
-            onView(
-                anyOf(
-                    allOf(
-                        random, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
-            onView(
-                anyOf(
-                    allOf(
-                        cardTitle, feedContentType
-                    )
-                )
-            ).check(matches(isChecked()))
+                onView(anyOf(allOf(causeRead, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(cardNews, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(onThisDay, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(random, feedContentType)))
+                    .check(matches(isChecked()))
+                onView(anyOf(allOf(cardTitle, feedContentType)))
+                    .check(matches(isChecked()))
+            }
         }
     }
 }

@@ -14,21 +14,21 @@ class AboutPage {
     private val license = withId(R.id.about_app_license)
 
     fun authors() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(15)).untilAsserted {
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
             onView(contributors)
                 .check(matches(isDisplayed()))
         }
     }
 
     fun translators() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(15)).untilAsserted {
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
             onView(translators)
                 .check(matches(isDisplayed()))
         }
     }
 
     fun license() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(15)).untilAsserted {
+        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
             onView(license)
                 .check(matches((isDisplayed())))
         }
