@@ -26,7 +26,7 @@ class LoginPage {
     private val textInputEndIcon = withId(com.google.android.material.R.id.text_input_end_icon)
     private val createAccountSubmit = withId(R.id.create_account_submit_button)
     private val warningPassword = withText(R.string.create_account_password_error)
-    private val red = anyOf(hasTextColor(R.color.red700), hasTextColor(R.color.red500))
+    private val red = anyOf(hasTextColor(R.color.red700), hasTextColor(R.color.red500)) // разные цвета для темной и светлой тем
     private val anyOfPassword = anyOf(withHint("Пароль"), withHint("Password"))
 
     fun typePassword() {
