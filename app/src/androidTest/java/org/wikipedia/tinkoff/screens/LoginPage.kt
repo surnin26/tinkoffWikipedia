@@ -1,6 +1,5 @@
 package org.wikipedia.tinkoff.screens
 
-
 import androidx.test.espresso.Espresso.closeSoftKeyboard
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
@@ -19,7 +18,6 @@ import org.hamcrest.Matchers.not
 import org.wikipedia.R
 import java.time.Duration
 
-
 class LoginPage {
 
     private val passwordInput = withId(R.id.create_account_password_input)
@@ -28,11 +26,12 @@ class LoginPage {
     private val warningPassword = withText(R.string.create_account_password_error)
     private val red = anyOf(hasTextColor(R.color.red700), hasTextColor(R.color.red500)) // разные цвета для темной и светлой тем
     private val anyOfPassword = anyOf(withHint("Пароль"), withHint("Password"))
+    private val password = "1234567"
 
     fun typePassword() {
         await().atMost(Duration.ofSeconds(5)).untilAsserted {
             onView(anyOfPassword)
-                .perform(typeText("1234567"))
+                .perform(typeText(password))
             closeSoftKeyboard()
         }
     }
@@ -48,9 +47,9 @@ class LoginPage {
     fun typePasswordLessThan() {
         await().atMost(Duration.ofSeconds(5)).untilAsserted {
             onView(anyOfPassword)
-                .perform(typeText("1234567"))
+                .perform(typeText(password))
             onView(anyOf(withHint("Repeat password"), withHint("Повторите пароль")))
-                .perform(typeText("1234567"))
+                .perform(typeText(password))
         }
     }
 
@@ -63,7 +62,7 @@ class LoginPage {
 
     fun checkPasswordDisplayed() {
         await().atMost(Duration.ofSeconds(5)).untilAsserted {
-            onView(withText("1234567"))
+            onView(withText(password))
                 .check(matches(isDisplayed()))
         }
     }
@@ -79,7 +78,7 @@ class LoginPage {
     fun checkPasswordNotDisplayed() {
         await().atMost(Duration.ofSeconds(5)).untilAsserted {
             onView(allOf(textInputEndIcon, isDescendantOfA(passwordInput)))
-                .check(matches(not(withText("1234567"))))
+                .check(matches(not(withText(password))))
         }
     }
 
