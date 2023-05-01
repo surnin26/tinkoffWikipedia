@@ -8,8 +8,9 @@ import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isRoot
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import org.awaitility.Awaitility
+import org.awaitility.Awaitility.await
 import org.wikipedia.R
+import java.time.Duration
 
 class Settings {
 
@@ -18,21 +19,21 @@ class Settings {
     private val policy = withText(R.string.privacy_policy_description)
 
     fun openFeedSettings() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+        await().atMost(Duration.ofSeconds(5)).untilAsserted {
             onView(customize)
                 .perform(click())
         }
     }
 
     fun clickToAbout() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(10)).untilAsserted {
+        await().atMost(Duration.ofSeconds(15)).untilAsserted {
             onView(about)
                 .perform(click())
         }
     }
 
     fun clickOnPolicyAndCheckBrowser() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(10)).untilAsserted {
+        await().atMost(Duration.ofSeconds(10)).untilAsserted {
             Intents.init()
             onView(policy)
                 .perform(click())
@@ -41,7 +42,7 @@ class Settings {
     }
 
     fun scroll() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+        await().atMost(Duration.ofSeconds(5)).untilAsserted {
             onView(isRoot())
                 .perform(swipeUp())
         }

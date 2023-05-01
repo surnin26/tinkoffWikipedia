@@ -1,17 +1,17 @@
 package org.wikipedia.tinkoff.screens
 
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.hasSibling
 import androidx.test.espresso.matcher.ViewMatchers.isChecked
 import androidx.test.espresso.matcher.ViewMatchers.withChild
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
-import org.awaitility.Awaitility
+import org.awaitility.Awaitility.await
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.core.AnyOf.anyOf
 import org.wikipedia.R
+import java.time.Duration
 
 class SettingsFeed {
 
@@ -30,7 +30,7 @@ class SettingsFeed {
 
 
     fun verifyFeedOptions() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(10)).untilAsserted {
+        await().atMost(Duration.ofSeconds(10)).untilAsserted {
             try {
                 onView(allOf(featuredArticle, feedContentType))
                     .check(matches(isChecked()))

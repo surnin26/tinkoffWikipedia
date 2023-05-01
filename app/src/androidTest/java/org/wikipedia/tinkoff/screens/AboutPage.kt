@@ -4,8 +4,9 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import org.awaitility.Awaitility
+import org.awaitility.Awaitility.await
 import org.wikipedia.R
+import java.time.Duration
 
 class AboutPage {
 
@@ -14,21 +15,21 @@ class AboutPage {
     private val license = withId(R.id.about_app_license)
 
     fun authors() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+        await().atMost(Duration.ofSeconds(5)).untilAsserted {
             onView(contributors)
                 .check(matches(isDisplayed()))
         }
     }
 
     fun translators() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+        await().atMost(Duration.ofSeconds(5)).untilAsserted {
             onView(translators)
                 .check(matches(isDisplayed()))
         }
     }
 
     fun license() {
-        Awaitility.await().atMost(java.time.Duration.ofSeconds(5)).untilAsserted {
+        await().atMost(Duration.ofSeconds(5)).untilAsserted {
             onView(license)
                 .check(matches((isDisplayed())))
         }
